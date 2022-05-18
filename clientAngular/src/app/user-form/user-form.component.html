@@ -1,0 +1,21 @@
+
+<form *ngIf="user!=null" #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    <div>
+        <label for="name">Name</label>
+            <input type = "text" id="name" name = "name" [(ngModel)]="user.name"/>
+        
+    </div>
+    <div>
+        <label for="description">Surname</label>
+            <input type = "text" id="surname" name = "surname" [(ngModel)]="user.surname"/>
+        
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
+<div *ngIf="user == null">
+    There is no such a user<br/>
+    Back to list of users<br/>
+    <button (click)="onCancel()">Cancel</button>
+</div>

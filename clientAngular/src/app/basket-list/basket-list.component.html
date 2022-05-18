@@ -1,0 +1,9 @@
+<div>
+    <app-basket 
+      (onClearClick)="clearBasket()" 
+      (onPlusClick)="basketButtonPlus($event)"
+      (onMinusClick)="basketButtonMinus($event)"
+      (onDeleteClick)="basketButtonDelete($event)"
+      [data]="basket">
+    </app-basket>
+  </div>

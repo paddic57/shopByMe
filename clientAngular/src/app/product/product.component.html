@@ -1,0 +1,30 @@
+
+<div>
+    <div>
+        <div>
+            <div>
+                Name: {{product.name}}
+            </div>
+    
+        </div>
+        <div>
+           <div>
+               Descritption: {{product.description}}
+           </div>
+    
+        </div>
+        <div>
+           <div>
+               Price: {{product.price}} zl
+           </div>
+    
+        </div>
+        <div>
+            <button (click)="addProductToBasket(product)">Add To Basket</button>
+            <button (click)="editProductToBasket(product)">Edit Product</button>
+            <button (click)="deleteProduct(product)">Delete Product</button>
+        </div>
+
+    </div> 
+    <div class = "clear"></div>
+</div>

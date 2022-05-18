@@ -1,0 +1,20 @@
+<div>
+    <h1><strong>Sklep</strong></h1>
+    <div *ngFor = "let prod of products">
+      <app-product (onAddToBasket)="addToBasket($event)" [product]="prod" (onEditToBasket)="editToBasket($event)" (onDeleteProduct)="deleteProduct($event)"></app-product>
+
+    </div>
+  
+</div>
+<div>
+  <div>
+    <label for = "page">Strona: </label>
+    <input id="page" name="page" type =  "number" [(ngModel)]="page"/>
+  </div>
+  <div>
+    <label for = "rowsPerPage">Elementy na strone: </label>
+    <input id="rowsPerPage" name="rowsPerPage" type =  "number" [(ngModel)]="rowsPerPage"/>
+  </div> 
+
+</div>
+<button (click) = "refresh()">Refresh</button>

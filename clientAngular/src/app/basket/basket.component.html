@@ -1,0 +1,37 @@
+<div>
+
+    <div>
+        <button (click)="changeButtonWyswietlName()" id="buttonWyswietl">Ukryj</button>
+    </div>
+    <div *ngIf="showButtonWyswietlUkryj()== true">
+        <div *ngFor = "let bas of basket"> 
+            <div>
+                <div>
+                    Name: {{bas.name}}
+                </div>
+                <div>
+                    Count: {{bas.count}}
+                </div>
+                <div>
+                    Price: {{bas.price}}
+                </div>
+                <div>
+                    <button (click)="basketButtonPlus(bas)" id="basketButtonPlus">+</button>
+                    <button (click)="basketButtonMinus(bas)" id="basketButtonMinus">-</button>
+                    <button (click)="basketButtonDelete(bas)" id="basketButtonUsun">Usun</button>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div *ngIf="showClearBasketButton()">
+        <button (click)="clearBasket()">Wyczyść koszyk</button>
+    </div>
+    <div>
+        Products in basket: {{getNumberOfProductInBasket()}}
+    </div>
+    <div>
+        Total price: {{getTotalPriceInBasket()}}
+    </div>
+    
+<div class = "clear"></div>
+</div>
