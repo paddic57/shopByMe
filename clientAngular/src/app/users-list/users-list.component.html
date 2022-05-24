@@ -1,7 +1,7 @@
 <div>
     <h1><strong>List of users</strong></h1>
     <div *ngFor = "let user of users">
-        <app-user [user]="user" (onEditUser)="editUser($event)"></app-user>
+        <app-user [user]="user" (onEditUser)="editUser($event)" (onDeleteUser)="deleteUser($event)"></app-user>
     </div>
 </div>
 
@@ -17,3 +17,4 @@
   
   </div>
   <button (click) = "refresh()">Refresh</button>
+  <button (click) = "addNewUser()">Add User</button>

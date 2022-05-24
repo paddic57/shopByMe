@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserComponent } from './user/user.component';
+import { UsersAddComponent } from './users-add/users-add.component';
+import { ProductsAddComponent } from './products-add/products-add.component';
 
 
 export function tokenGetter(){
@@ -34,6 +36,8 @@ export function tokenGetter(){
     LoginComponent,
     UserFormComponent,
     UserComponent,
+    UsersAddComponent,
+    ProductsAddComponent,
   ],
   imports: [
     BrowserModule,

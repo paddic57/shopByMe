@@ -9,10 +9,14 @@ import { User } from '../models/user';
 export class UserComponent implements OnInit {
   @Input() public user: User;
   @Output() public onEditUser: EventEmitter<User> = new EventEmitter<User>();
+  @Output() public onDeleteUser: EventEmitter<User> = new EventEmitter<User>();
   constructor() { }
 
   public editUser(product: User): void{
     this.onEditUser.emit(product);
+  }
+  public deleteUser(product: User): void{
+    this.onDeleteUser.emit(product);
   }
   ngOnInit(): void {
   }

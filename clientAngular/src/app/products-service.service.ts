@@ -39,6 +39,6 @@ export class ProductsServiceService {
     return this.httpClient.put<Product>("https://localhost:44373/api/Products/" + id,dto)
   }
   delete(id: number): Observable<Product>{
-    return this.httpClient.delete<Product>("https://localhost:44373/api/Products/" + id)
+    return this.httpClient.delete<Product>("https://localhost:44373/api/Products/?productId=" + id)
   }
 }

@@ -15,5 +15,7 @@ namespace Services
         public UsersDto getById(int id);
 
         public UsersDto Put(int productId, PostUsersDto dto);
+
+        public bool Delete(int id);
     }
 }

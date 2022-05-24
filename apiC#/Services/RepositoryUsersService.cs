@@ -114,6 +114,15 @@ namespace Services
             };
             return retUser;
         }
+        public bool Delete(int id)
+        {
+            var user = context.Users.Where(x => x.Id == id).FirstOrDefault();
+            if (user == null)
+                return false;
+            this.context.Users.Remove(user);
+            this.context.SaveChanges();
+            return true;
+        }
 
 
     }

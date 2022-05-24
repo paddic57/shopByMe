@@ -34,6 +34,11 @@ namespace lab3v2.Controllers
         {
             return iUsersService.Put(id, dto);
         }
+        [HttpDelete("{id}")]
+        public bool Delete(int id)
+        {
+            return iUsersService.Delete(id);
+        }
 
 
 

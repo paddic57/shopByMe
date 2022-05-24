@@ -27,25 +27,26 @@ export class ProductsListComponent{
     this.basketService.post(product.id, 1).subscribe();
   }
   public editToBasket(product: Product): void{
-    this.router.navigateByUrl('products/' + product.id)
+    this.router.navigateByUrl('products/edit/' + product.id)
   }
   public deleteProduct(product: Product): void{
-    this.productService.delete(product.id);
-    this.productService.get().subscribe(resp => this.products = resp.data)
+    this.productService.delete(product.id).subscribe(resp1 => this.productService.get().subscribe(resp2=> this.products = resp2.data))
   }
-  public refresh():void {
+  public async refresh():Promise<void> {
     let pagination = new Pagination();
     pagination.page = this.page;
     pagination.sortAscending = true;
     pagination.sortColumn = "Name";
     pagination.rowsPerPage = this.rowsPerPage;
     this.productService.get(pagination).subscribe(response => this.products = response.data)
-
   }
   constructor( private productService: ProductsServiceService,private basketService: BasketServiceService, private router: Router){
     productService.get().subscribe(responce => this.products = responce.data);
 
     
+  }
+  public addNewProduct(){
+    this.router.navigateByUrl("products/add")
   }
   ngOnInit(): void {
     

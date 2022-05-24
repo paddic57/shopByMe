@@ -37,4 +37,7 @@ export class UserServiceService {
   put(id: number, dto: PostUsersDto): Observable<User>{
     return this.httpClient.put<User>("https://localhost:44373/api/Users/" + id,dto)
   }
+  delete(id: number): Observable<User>{
+    return this.httpClient.delete<User>("https://localhost:44373/api/Users/"+id)
+  }
 }

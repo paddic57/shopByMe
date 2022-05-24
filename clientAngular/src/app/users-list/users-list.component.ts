@@ -27,7 +27,10 @@ export class UsersListComponent implements OnInit {
   }
 
   public editUser(user: User): void{
-    this.router.navigateByUrl('users/' + user.id)
+    this.router.navigateByUrl('users/edit/' + user.id)
+  }
+  public deleteUser(user: User):void {
+    this.userService.delete(user.id).subscribe(resp1 => this.userService.get().subscribe(resp2 => this.users = resp2.data))
   }
 
 
@@ -39,6 +42,9 @@ export class UsersListComponent implements OnInit {
     pagination.rowsPerPage = this.rowsPerPage;
     this.userService.get(pagination).subscribe(response => this.users = response.data)
 
+  }
+  public addNewUser():void{
+    this.router.navigateByUrl("users/add")
   }
 
 }
