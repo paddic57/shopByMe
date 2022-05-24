@@ -40,4 +40,7 @@ export class UserServiceService {
   delete(id: number): Observable<User>{
     return this.httpClient.delete<User>("https://localhost:44373/api/Users/"+id)
   }
+  post(dto: PostUsersDto): Observable<User>{
+    return this.httpClient.post<User>("https://localhost:44373/api/Users/", dto)
+  }
 }

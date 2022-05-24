@@ -27,7 +27,6 @@ export class UserFormComponent implements OnInit {
         console.log(this.user)
     }
     onSubmit(event: NgForm):void{
-      console.log(event.form.value)
       this.userService.put(this.userId, event.form.value).subscribe({next: x => {
           this.router.navigateByUrl("users")
       }, error: error => {

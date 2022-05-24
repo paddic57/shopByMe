@@ -1,5 +1,5 @@
 
-<form *ngIf="user!=null" #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+<form *ngIf="user!=null" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
     <div>
         <label for="name">Name</label>
             <input type = "text" id="name" name = "name" [(ngModel)]="user.name"/>

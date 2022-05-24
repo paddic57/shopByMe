@@ -1,1 +1,28 @@
-<p>users-add works!</p>
+<form  #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <div>
+        <label for="login">Login</label>
+            <input type = "text" id="name" name = "Login" ngModel />    
+    </div>
+    <div>
+        <label for="password">Password</label>
+            <input type = "password" id="password" name = "Password" ngModel />       
+    </div>
+    <div>
+        <label for="passwordConfirm">Confirm Password</label>
+            <input type = "password" id="passwordConfirm" name = "PasswordConfirm" />
+            <div *ngIf="missmatchingPasswords==true">
+                MISS MATCHING PASSWORDS
+            </div>
+    </div>
+    <div>
+        <label for="name">Name</label>
+            <input type = "text" id="name" name = "Name" ngModel/>
+    </div>
+    <div>
+        <label for="surname">Surname</label>
+            <input type = "text" id="surname" name = "Surname" ngModel/>    
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
