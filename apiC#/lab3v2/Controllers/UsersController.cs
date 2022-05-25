@@ -20,7 +20,7 @@ namespace lab3v2.Controllers
             return iUsersService.Get(dto);
         }
         [HttpPost]
-        public UsersDto Post([FromQuery]PostUsersDto dto)
+        public UsersDto Post(PostUsersDto dto)
         {
             return iUsersService.Post(dto);
         }

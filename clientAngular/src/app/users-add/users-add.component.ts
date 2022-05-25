@@ -11,9 +11,8 @@ import { UserServiceService } from '../user-service.service';
 })
 export class UsersAddComponent implements OnInit {
 
-  user: PostUsersDto
+  user: PostUsersDto = new PostUsersDto()
   private userId: number
-  submitted: boolean = false
 
   private pass: string
   private passConf: string
@@ -54,21 +53,23 @@ export class UsersAddComponent implements OnInit {
         return null;
       }
     }
-
-    // onSubmit(event: NgForm):void{
-    //   if(true){
-    //     console.log(event.value)
-    //     this.userService.post(event.form.value).subscribe({next: x => {
-    //       this.router.navigateByUrl("products")
-    //     }, error: error => {
-    //       console.log(error)
-    //     }})
-    //   }
-    // }
     onSubmit():void{
       console.log(this.userForm)
-      this.submitted = true;
-      
+      if(this.userForm.status == 'VALID'){
+          this.user.login = this.userForm.controls["login"].value;
+          this.user.password = this.userForm.controls["password"].value;
+          this.user.surname = this.userForm.controls["surname"].value;
+          this.user.name = this.userForm.controls["name"].value;
+
+          console.log(this.user)
+          this.userService.post(this.user).subscribe({next: x =>{
+            this.router.navigateByUrl("products")
+          }
+          , error: error =>{
+            console.log(error)
+          }
+          })
+      }
     }
     
 
