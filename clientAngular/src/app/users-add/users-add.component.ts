@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup, NgForm, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormGroup, NgForm, Validators, ValidatorFn, FormControl, ReactiveFormsModule, ValidationErrors, RequiredValidator, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostUsersDto } from '../models/post-user';
 import { UserServiceService } from '../user-service.service';
@@ -13,32 +13,62 @@ export class UsersAddComponent implements OnInit {
 
   user: PostUsersDto
   private userId: number
-  missmatchingPasswords: boolean
+  submitted: boolean = false
 
   private pass: string
   private passConf: string
 
+  userForm: FormGroup
+
   constructor(private activatedRoute: ActivatedRoute,
     private userService: UserServiceService,
-    private router: Router) { }
+    private router: Router, private formBuilder: FormBuilder) {
+      this.userForm = this.formBuilder.group({
+        surname: new FormControl('', Validators.required),
+        login: new FormControl('', Validators.required),
+        name: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required),
+        passwordConfirm: new FormControl('', Validators.required),
+      },{
+        validators: this.matchPassword('password', 'passwordConfirm')
+      })
+     }
 
     ngOnInit(): void {
       
     }
-    // checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => { 
-    //   let pass = group.get('Password').value;
-    //   let confirmPass = group.get('ConfirmPassword').value
-    //   return pass === confirmPass ? null : { notSame: true }
-    // }
-    onSubmit(event: NgForm):void{
-      if(true){
-        console.log(event.value)
-        this.userService.post(event.form.value).subscribe({next: x => {
-          this.router.navigateByUrl("products")
-        }, error: error => {
-          console.log(error)
-        }})
+
+    matchPassword(controlName1: string, controlName2: string){
+      return (formGroup: FormGroup) =>{
+        const control1 = formGroup.controls[controlName1]
+        const control2 = formGroup.controls[controlName2]
+
+        if(control2.value.errors && !control2.errors['matchPassword']){
+          return
+        }
+        if (control1.value !== control2.value) {
+          control2.setErrors({ matchPassword: true });
+        } else {
+          control2.setErrors(null);
+        }
+        return null;
       }
+    }
+
+    // onSubmit(event: NgForm):void{
+    //   if(true){
+    //     console.log(event.value)
+    //     this.userService.post(event.form.value).subscribe({next: x => {
+    //       this.router.navigateByUrl("products")
+    //     }, error: error => {
+    //       console.log(error)
+    //     }})
+    //   }
+    // }
+    onSubmit():void{
+      console.log(this.userForm)
+      this.submitted = true;
+      
     }
     
 

@@ -11,7 +11,7 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { BasketListComponent } from './basket-list/basket-list.component'
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app-routing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { LoginComponent } from './login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -49,7 +49,8 @@ export function tokenGetter(){
         tokenGetter: tokenGetter,
         allowedDomains: ["localhost:44373"]
       }
-    })
+    }),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
