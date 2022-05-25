@@ -22,7 +22,7 @@ namespace lab3v2.Controllers
             return iproductsService.Get(dto);
         }
         [HttpPost]
-        public ProductDto Post([FromQuery] PostProductDto dto)
+        public ProductDto Post(PostProductDto dto)
         {
             return iproductsService.Post(dto);
         }

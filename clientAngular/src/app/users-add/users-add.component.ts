@@ -14,9 +14,6 @@ export class UsersAddComponent implements OnInit {
   user: PostUsersDto = new PostUsersDto()
   private userId: number
 
-  private pass: string
-  private passConf: string
-
   userForm: FormGroup
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -54,14 +51,12 @@ export class UsersAddComponent implements OnInit {
       }
     }
     onSubmit():void{
-      console.log(this.userForm)
       if(this.userForm.status == 'VALID'){
           this.user.login = this.userForm.controls["login"].value;
           this.user.password = this.userForm.controls["password"].value;
           this.user.surname = this.userForm.controls["surname"].value;
           this.user.name = this.userForm.controls["name"].value;
-
-          console.log(this.user)
+          
           this.userService.post(this.user).subscribe({next: x =>{
             this.router.navigateByUrl("products")
           }
