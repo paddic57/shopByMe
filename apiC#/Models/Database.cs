@@ -18,8 +18,14 @@ namespace Models
             Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
+        { 
             optionsBuilder.UseSqlite(@"Datasource=A:\\1STUDIA\\rok 3 sem 6\\Tworzenie_aplikacji_internetowych_bazodanowych\\laboratoria\\angularProjekt\\apiC#\\database.db;");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .Property(x => x.Role)
+                .HasDefaultValue(RoleEnum.User);
         }
     }
 }

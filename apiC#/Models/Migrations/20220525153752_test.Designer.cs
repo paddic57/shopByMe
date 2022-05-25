@@ -8,8 +8,8 @@ using Models;
 namespace Models.Migrations
 {
     [DbContext(typeof(Database))]
-    [Migration("20220517121551_init")]
-    partial class init
+    [Migration("20220525153752_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,6 +84,11 @@ namespace Models.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Role")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(1);
 
                     b.Property<string>("Surname")
                         .IsRequired()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace Models
         public string Name { get; set; }
         [MaxLength(60), Required]
         public string Surname { get; set; }
+        public RoleEnum Role { get; set; }
         public List<BasketItem> basketItems { get; set; }
 
     }

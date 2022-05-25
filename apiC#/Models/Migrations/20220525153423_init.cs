@@ -30,7 +30,8 @@ namespace Models.Migrations
                     Login = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Password = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 40, nullable: false),
-                    Surname = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false)
+                    Surname = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
+                    Role = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
