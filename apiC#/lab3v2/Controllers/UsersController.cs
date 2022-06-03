@@ -9,7 +9,7 @@ namespace lab3v2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : ControllerBase
     {
         private IUsersService iUsersService;

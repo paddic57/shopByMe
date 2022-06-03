@@ -23,24 +23,20 @@ namespace Services
             this.context = context;
         }
 
-        public string Login(AuthorizationDto user)
+        public bool Login(AuthorizationDto user, out int role)
         {
             if (context.Users.Where(x => x.Login == user.Login && x.Password == user.Password).Any())
             {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("patryk1234supersecuritykey"));
-                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-                var tokenOptions = new JwtSecurityToken(
-                    issuer: "http://localhost:4200",
-                    audience: "http://localhost:4200",
-                    claims: new List<Claim>(),
-                    expires: DateTime.Now.AddMinutes(5),
-                    signingCredentials: signinCredentials
-                    );
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-                return tokenString;
+                role = ((int)context.Users.Where(x => x.Login == user.Login && x.Password == user.Password).FirstOrDefault().Role);
+                return true;
             }
+
             else
-                return "unAuthorized";
+            {
+                role = -1;
+                return false;
+            }
+                
         }
     }
 }

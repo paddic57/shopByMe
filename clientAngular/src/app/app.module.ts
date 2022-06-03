@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { BasketComponent } from './basket/basket.component';
 
-import{HttpClientModule} from '@angular/common/http';
+import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { UsersListComponent } from './users-list/users-list.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { BasketListComponent } from './basket-list/basket-list.component'
@@ -19,6 +19,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserComponent } from './user/user.component';
 import { UsersAddComponent } from './users-add/users-add.component';
 import { ProductsAddComponent } from './products-add/products-add.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 
 export function tokenGetter(){
@@ -52,7 +53,9 @@ export function tokenGetter(){
     }),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

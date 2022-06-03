@@ -12,8 +12,11 @@
         <td>
             <a routerLink="basket">Basket</a>
         </td>
-        <td>
+        <td *ngIf="!isUserAuthenticated()">
             <a routerLink="login">Sign in</a>
+        </td>
+        <td *ngIf="isUserAuthenticated()">
+            <a (click) = "logOut()">Logout</a>
         </td>
     </table>
     

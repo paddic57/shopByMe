@@ -123,6 +123,16 @@ namespace Services
             this.context.SaveChanges();
             return true;
         }
+        public int getUserIdByUserLogin(string userLogin)
+        {
+            var retUser = context.Users.Where(x => x.Login == userLogin).FirstOrDefault();
+            if (retUser != null)
+            {
+                return retUser.Id;
+            }
+            else
+                return -1;
+        }
 
 
     }

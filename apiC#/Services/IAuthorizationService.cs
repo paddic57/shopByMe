@@ -10,7 +10,7 @@ namespace Services
 {
     public interface IAuthorizationService
     {
-        public string Login(AuthorizationDto user);
+        public bool Login(AuthorizationDto user, out int role);
 
     }
 }

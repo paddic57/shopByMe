@@ -27,9 +27,7 @@ namespace lab3v2
         }
 
         public IConfiguration Configuration { get; }
-        //public Database database;
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) 
         {
 
@@ -45,15 +43,7 @@ namespace lab3v2
             services.AddScoped<IBasketService, RepositoryBasketService>();
             services.AddScoped<IProductsService, RepositoryProductsService>();
 
-            //services.AddCors(options => options.AddPolicy("politykaCors", policy => policy.AllowAnyMethod().AllowCredentials().SetIsOriginAllowed(host => true).AllowAnyHeader().Build()));
-            /*services.AddCors();*/
-            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
-            {
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader()
-                       .Build();
-            }));
+            
 
 
             services.AddAuthentication(a =>
@@ -71,17 +61,24 @@ namespace lab3v2
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = "http://localhost:4200",
                         ValidAudience = "http://localhost:4200",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("patryk1234"))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("patryk1234!@#$patryksuperkey"))
                     };
                 });
+
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyHeader()
+                       .AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .Build();
+            }));
             services.AddControllers();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            app.UseCors("MyPolicy");
+        { 
 
             if (env.IsDevelopment())
             {
@@ -94,6 +91,7 @@ namespace lab3v2
 
             app.UseRouting();
 
+            app.UseCors("MyPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -103,20 +101,7 @@ namespace lab3v2
             {
                 endpoints.MapControllers();
             });
-            /*app.UseCors(builder =>
-            {
-                builder.WithOrigins("https://localhost:4200");
-                builder.AllowAnyMethod();
-                builder.AllowCredentials();
-                builder.AllowAnyHeader();
-            });*/
 
-            
-            /*app.UseCors(x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true)
-                .AllowCredentials());*/
 
 
         }

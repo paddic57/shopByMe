@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PaginatedData } from './models/paginatedData';
@@ -25,15 +25,17 @@ export class ProductsServiceService {
       
     }
 
-
     return this.httpClient.get<PaginatedData<Product>>('https://localhost:44373/api/Products?SortColumn='
     +(pagination?.sortColumn)
     +"&Page=" + (pagination?.page)
     +"&rowsPerPage=" + (pagination?.rowsPerPage)
-    +'&SortAscending=' + (pagination?.sortAscending));
+    +'&SortAscending=' + (pagination?.sortAscending)
+    );
   }
   getById(id: number): Observable<Product>{
-    return this.httpClient.get<Product>("https://localhost:44373/api/Products/"+id);
+    return this.httpClient.get<Product>("https://localhost:44373/api/Products/"+id, {
+      headers: new HttpHeaders({Authorization: "Bearer "+ localStorage.getItem("jwt")})
+    });
   }
   put(id: number, dto: PostProductDto): Observable<Product>{
     return this.httpClient.put<Product>("https://localhost:44373/api/Products/" + id,dto)
