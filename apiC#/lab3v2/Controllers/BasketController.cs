@@ -8,7 +8,7 @@ namespace lab3v2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-/*    [Authorize]*/
+    [Authorize]
     public class BasketController : ControllerBase
     {
         private IBasketService iBasketService;
