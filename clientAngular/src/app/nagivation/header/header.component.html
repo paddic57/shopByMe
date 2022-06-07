@@ -1,24 +1,29 @@
-<mat-toolbar color="primary">
-    <div fxHide.gt-xs>
-        <button class ="menuButton" mat-icon-button color="primary" (click)="onToggleSidenav()">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
-    <div class = "menu">
-        Menu
-    </div>
-    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
-        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
-            <li>
-                <a routerLink="products">Products</a>                
-            </li>
-            <li>
-                <a routerLink="users">Users</a>
-            </li>
-            <li>
-                <a routerLink="basket">Basket</a>
-            </li>
-            
-        </ul>
-    </div>
-</mat-toolbar>
+<div class="main">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <button class="menuButton" mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+          </button>
+          <h1> Menu </h1>
+          <div>
+            <a mat-button routerLink='products'> Products </a>
+            <a mat-button routerLink='basket'> Basket </a>
+            <a mat-button routerLink='users'> Users </a>
+          </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav>
+          <mat-nav-list>
+            <a mat-list-item routerLink="products"> Products </a>
+            <a mat-list-item routerLink='basket'> Basket </a>
+            <a mat-list-item routerLink='users'> Users </a>
+          </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+          <div>
+            <router-outlet></router-outlet>
+          </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

@@ -1,6 +1,5 @@
 a{
-    text-decoration: none;
-    color: black;
+    color: white;
 }
 a:hover, a:active{
     color: lightgrey;
@@ -10,21 +9,17 @@ navigation-items{
     padding: 0;
     margin: 0;
 }
-mat-toolbar{
-    border-radius: 3px;
-}
-@media(max-width: 959px){
-    mat-toolbar{
-        border-radius: 0px;
-    }
-}
-.menu{
-    font-family: Roboto;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-}
 .menuButton{
-    background-color: #007bff;
+    background-color: #3F51B5;
+}
+mat-sidenav{
+    background-color:#6577db;
+    width: 30vh;
+}
+mat-sidenav-content{
+    height: 100vh;
+}
+.main{
+    color: white;
+    font-family: Roboto;
 }
