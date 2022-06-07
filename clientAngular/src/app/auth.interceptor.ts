@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
     return next.handle(request).pipe(tap((e: HttpEvent<unknown>)=>{
       if(e instanceof HttpResponse){
-        alert("REQUEST: " + e.status)
+        console.log("REQUEST: " + e.status)
       }
     }));
   }

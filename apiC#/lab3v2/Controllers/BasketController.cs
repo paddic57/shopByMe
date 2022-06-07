@@ -8,7 +8,7 @@ namespace lab3v2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+/*    [Authorize]*/
     public class BasketController : ControllerBase
     {
         private IBasketService iBasketService;
@@ -37,7 +37,7 @@ namespace lab3v2.Controllers
             return iBasketService.Delete(id);
         }
         [HttpPut("{id}")]
-        public IEnumerable<BasketItemDto> Put(int id, [FromQuery] int count)
+        public IEnumerable<BasketItemDto> Put(int id, [FromBody] int count)
         {
             return iBasketService.Put(id, count);
         }

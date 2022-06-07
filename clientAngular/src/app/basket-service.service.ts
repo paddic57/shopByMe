@@ -24,7 +24,7 @@ export class BasketServiceService {
     return this.httpClient.get<BasketItem[]>('https://localhost:44373/api/Basket/')
   }
   put(basketItemId: number, basketItemCount: number):Observable<BasketItem[]>{
-    return this.httpClient.get<BasketItem[]>('https://localhost:44373/api/Basket/' + basketItemId + "?count=" + basketItemCount)
+    return this.httpClient.put<BasketItem[]>('https://localhost:44373/api/Basket/' + basketItemId, basketItemCount)
   }
 
 
