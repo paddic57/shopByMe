@@ -22,6 +22,7 @@ import { ProductsAddComponent } from './products-add/products-add.component';
 import { AuthInterceptor } from './auth.interceptor';
 
 
+
 export function tokenGetter(){
   return localStorage.getItem("jwt");
 }

@@ -1,27 +1,34 @@
 <div>
-    <strong>
-        Menu
-    </strong>
-    <table>
-        <td>
-            <a routerLink="products">Products</a>
-        </td>
-        <td>
-            <a routerLink="users">Users</a>
-        </td>
-        <td>
-            <a routerLink="basket">Basket</a>
-        </td>
-        <td *ngIf="!isUserAuthenticated()">
-            <a routerLink="login">Sign in</a>
-        </td>
-        <td *ngIf="isUserAuthenticated()">
-            <a (click) = "logOut()">Logout</a>
-        </td>
-    </table>
+    
+    <div class = "red">
+        <strong>
+            Menu
+        </strong>
+        <table>
+            <td>
+                <a routerLink="products">Products</a>
+            </td>
+            <td>
+                <a routerLink="users">Users</a>
+            </td>
+            <td>
+                <a routerLink="basket">Basket</a>
+            </td>
+            <td *ngIf="!isUserAuthenticated()">
+                <a routerLink="login">Sign in</a>
+            </td>
+            <td *ngIf="isUserAuthenticated()">
+                <a (click) = "logOut()">Logout</a>
+            </td>
+        </table>
+        <router-outlet></router-outlet>
+    </div>
+    <mat-sidenav-container>
+        
+    </mat-sidenav-container>
+    
     
     
     
 </div>
 
-<router-outlet></router-outlet>
