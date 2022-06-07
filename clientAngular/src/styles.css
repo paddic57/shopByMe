@@ -1,5 +1,8 @@
-
-.red{
-    background-color: #ed4040;
-    grid-area: red;
+.mat-toolbar.mat-primary {
+    background: #007bff;
+    color: white;
+  }
+  html, body { 
+    margin: 0;
+    height: 100%;
 }

@@ -20,6 +20,13 @@ import { UserComponent } from './user/user.component';
 import { UsersAddComponent } from './users-add/users-add.component';
 import { ProductsAddComponent } from './products-add/products-add.component';
 import { AuthInterceptor } from './auth.interceptor';
+import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { HeaderComponent } from './nagivation/header/header.component'; 
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -40,8 +47,10 @@ export function tokenGetter(){
     UserComponent,
     UsersAddComponent,
     ProductsAddComponent,
+    HeaderComponent,
   ],
   imports: [
+    MatSidenavModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES),
@@ -52,10 +61,22 @@ export function tokenGetter(){
         allowedDomains: ["localhost:44373"]
       }
     }),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    MatListModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
+  exports:[
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
   ],
   bootstrap: [AppComponent]
 })

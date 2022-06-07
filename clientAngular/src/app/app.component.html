@@ -1,31 +1,24 @@
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
 <div>
-    
-    <div class = "red">
-        <strong>
-            Menu
-        </strong>
-        <table>
-            <td>
-                <a routerLink="products">Products</a>
-            </td>
-            <td>
-                <a routerLink="users">Users</a>
-            </td>
-            <td>
-                <a routerLink="basket">Basket</a>
-            </td>
-            <td *ngIf="!isUserAuthenticated()">
-                <a routerLink="login">Sign in</a>
-            </td>
-            <td *ngIf="isUserAuthenticated()">
-                <a (click) = "logOut()">Logout</a>
-            </td>
-        </table>
-        <router-outlet></router-outlet>
+    <div >
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav role="navigation">
+                
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+                <div class="div1">
+                    <router-outlet></router-outlet>
+                </div>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
     </div>
-    <mat-sidenav-container>
-        
-    </mat-sidenav-container>
+    
     
     
     

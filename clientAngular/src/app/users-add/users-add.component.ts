@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup, NgForm, Validators, ValidatorFn, FormControl, ReactiveFormsModule, ValidationErrors, RequiredValidator, FormBuilder } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup, NgForm, Validators, ValidatorFn, UntypedFormControl, ReactiveFormsModule, ValidationErrors, RequiredValidator, UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostUsersDto } from '../models/post-user';
 import { UserServiceService } from '../user-service.service';
@@ -14,17 +14,17 @@ export class UsersAddComponent implements OnInit {
   user: PostUsersDto = new PostUsersDto()
   private userId: number
 
-  userForm: FormGroup
+  userForm: UntypedFormGroup
 
   constructor(private activatedRoute: ActivatedRoute,
     private userService: UserServiceService,
-    private router: Router, private formBuilder: FormBuilder) {
+    private router: Router, private formBuilder: UntypedFormBuilder) {
       this.userForm = this.formBuilder.group({
-        surname: new FormControl('', Validators.required),
-        login: new FormControl('', Validators.required),
-        name: new FormControl('', Validators.required),
-        password: new FormControl('', Validators.required),
-        passwordConfirm: new FormControl('', Validators.required),
+        surname: new UntypedFormControl('', Validators.required),
+        login: new UntypedFormControl('', Validators.required),
+        name: new UntypedFormControl('', Validators.required),
+        password: new UntypedFormControl('', Validators.required),
+        passwordConfirm: new UntypedFormControl('', Validators.required),
       },{
         validators: this.matchPassword('password', 'passwordConfirm')
       })
@@ -35,7 +35,7 @@ export class UsersAddComponent implements OnInit {
     }
 
     matchPassword(controlName1: string, controlName2: string){
-      return (formGroup: FormGroup) =>{
+      return (formGroup: UntypedFormGroup) =>{
         const control1 = formGroup.controls[controlName1]
         const control2 = formGroup.controls[controlName2]
 
