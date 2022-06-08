@@ -22,3 +22,6 @@ a:hover{
 .oneProduct:hover{
     border-style: groove;
 }
+.descritionItem{
+    margin-top: 8px;
+}

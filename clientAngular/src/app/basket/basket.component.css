@@ -1,0 +1,27 @@
+.description{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.name{
+   margin-top: 20px;
+}
+.oneItem{
+    width: 300px;
+    height: 125px;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+    
+}
+.buttons{
+    position: fixed;
+}
+a:hover{
+    border-style: groove;
+}
+.oneItem:hover{
+    border-style: groove;
+}
+.descritionItem{
+    padding: 8px;
+}

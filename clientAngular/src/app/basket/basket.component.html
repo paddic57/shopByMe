@@ -1,37 +1,38 @@
-<div>
-
-    <div>
-        <button (click)="changeButtonWyswietlName()" id="buttonWyswietl">Ukryj</button>
-    </div>
+<div >
     <div *ngIf="showButtonWyswietlUkryj()== true">
-        <div *ngFor = "let bas of basket"> 
+        <div class="oneItem" *ngFor = "let bas of basket"> 
             <div>
-                <div>
-                    Name: {{bas.name}}
+                <div class="name">
+                    {{bas.name}}
                 </div>
                 <div>
                     Count: {{bas.count}}
+                    <a mat-button (click)="basketButtonPlus(bas)" id="basketButtonPlus"><mat-icon>add</mat-icon></a>
+                    <a mat-button (click)="basketButtonMinus(bas)" id="basketButtonMinus"><mat-icon>remove</mat-icon></a>
                 </div>
                 <div>
-                    Price: {{bas.price}}
+                    
                 </div>
                 <div>
-                    <button (click)="basketButtonPlus(bas)" id="basketButtonPlus">+</button>
-                    <button (click)="basketButtonMinus(bas)" id="basketButtonMinus">-</button>
-                    <button (click)="basketButtonDelete(bas)" id="basketButtonUsun">Usun</button>
+                    {{bas.price}} zl
+                    <a mat-button (click)="basketButtonDelete(bas)" id="basketButtonUsun"><mat-icon>delete</mat-icon> Usun</a>
                 </div>
             </div>  
         </div>
     </div>
-    <div *ngIf="showClearBasketButton()">
-        <button (click)="clearBasket()">Wyczyść koszyk</button>
+    <div class="description">
+        <div>
+            <a mat-button (click)="changeButtonWyswietlName()" id="buttonWyswietl">Ukryj</a>
+            <a mat-button *ngIf="showClearBasketButton()" (click)="clearBasket()"><mat-icon>clear</mat-icon> Wyczyść koszyk</a>
+        </div>
+        <div class="descritionItem">
+            Products in basket: {{getNumberOfProductInBasket()}}
+        </div>
+        <div class="descritionItem">
+            Total price: {{getTotalPriceInBasket()}} zl
+        </div>
     </div>
-    <div>
-        Products in basket: {{getNumberOfProductInBasket()}}
-    </div>
-    <div>
-        Total price: {{getTotalPriceInBasket()}}
-    </div>
+    
     
 <div class = "clear"></div>
 </div>
