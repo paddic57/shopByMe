@@ -13,15 +13,11 @@
     margin-top: 10px;
     border-radius: 10px;
 }
-.buttons{
-    position: fixed;
-}
+
 a:hover{
     border-style: groove;
 }
 .oneProduct:hover{
     border-style: groove;
 }
-.descritionItem{
-    margin-top: 8px;
-}
+

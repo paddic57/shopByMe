@@ -1,11 +1,11 @@
-<div>
+<div class="userList">
     <h1><strong>List of users</strong></h1>
     <div *ngFor = "let user of users">
         <app-user [user]="user" (onEditUser)="editUser($event)" (onDeleteUser)="deleteUser($event)"></app-user>
     </div>
 </div>
 
-<div>
+<div class="pagination">
     <div>
       <label for = "page">Strona: </label>
       <input id="page" name="page" type =  "number" [(ngModel)]="page"/>
@@ -14,7 +14,7 @@
       <label for = "rowsPerPage">Elementy na strone: </label>
       <input id="rowsPerPage" name="rowsPerPage" type =  "number" [(ngModel)]="rowsPerPage"/>
     </div> 
-  
+    <a mat-button (click) = "refresh()"><mat-icon>refresh</mat-icon> Refresh </a>
+    <a mat-button (click) = "addNewUser()"><mat-icon>add</mat-icon> Add User </a>
   </div>
-  <button (click) = "refresh()">Refresh</button>
-  <button (click) = "addNewUser()">Add User</button>
+  

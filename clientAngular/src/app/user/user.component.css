@@ -1,0 +1,24 @@
+.description{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.field{
+   padding: 8px;
+}
+.oneUser{
+    width: 300px;
+    height: 200px;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.buttons{
+    margin-top:10px;
+}
+a:hover{
+    border-style: groove;
+}
+.oneUser:hover{
+    border-style: groove;
+}
