@@ -1,27 +1,27 @@
-<div>
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<div class="userAdd">
+    <form class = "formDiv" [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
         <label for="login">Login</label>
         <input type = "text" id="name" formControlName="login" /><br/>
-        <div *ngIf="this.userForm.controls['login'].getError('required')!=null&&this.userForm.controls['login'].touched">Login Required</div>
+        <div class="invalid" *ngIf="this.userForm.controls['login'].getError('required')!=null&&this.userForm.controls['login'].touched">Login Required</div>
 
         <label for="password">Password</label>
         <input type = "password" id="password" formControlName="password" /><br/>
-        <div *ngIf="this.userForm.controls['password'].getError('required')!=null&&this.userForm.controls['password'].touched">Password Required</div>
+        <div class="invalid" *ngIf="this.userForm.controls['password'].getError('required')!=null&&this.userForm.controls['password'].touched">Password Required</div>
 
         <label for="passwordConfirm">Confirm Password</label>
         <input type = "password" id="passwordConfirm" formControlName="passwordConfirm"/><br/>
-        <div *ngIf="this.userForm.controls['passwordConfirm'].getError('matchPassword')!=null&&this.userForm.controls['passwordConfirm'].touched">Password missmatched</div>
-        <div *ngIf="this.userForm.controls['passwordConfirm'].getError('required')!=null&&this.userForm.controls['passwordConfirm'].touched">Password confirm required</div>
+        <div class="invalid" *ngIf="this.userForm.controls['passwordConfirm'].getError('matchPassword')!=null&&this.userForm.controls['passwordConfirm'].touched">Password missmatched</div>
+        <div class="invalid" *ngIf="this.userForm.controls['passwordConfirm'].getError('required')!=null&&this.userForm.controls['passwordConfirm'].touched">Password confirm required</div>
 
         <label for="name">Name</label>
         <input type = "text" id="name" formControlName="name"/><br/>   
-        <div *ngIf="this.userForm.controls['name'].getError('required')!=null&&this.userForm.controls['name'].touched">Name required</div>            
+        <div class="invalid" *ngIf="this.userForm.controls['name'].getError('required')!=null&&this.userForm.controls['name'].touched">Name required</div>            
         
         <label for="surname">Surname</label>
         <input type = "text" id="surname" formControlName="surname"/><br/> 
-        <div *ngIf="this.userForm.controls['surname'].getError('required')!=null&&this.userForm.controls['surname'].touched">Surname required</div>  
+        <div class="invalid" *ngIf="this.userForm.controls['surname'].getError('required')!=null&&this.userForm.controls['surname'].touched">Surname required</div>  
         
-        <input type="submit" value="Save"/><br/>
+        <button type="submit" > Add User</button>
     </form>
 </div>
