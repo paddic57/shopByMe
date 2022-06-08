@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 
 
 @Component({
@@ -9,12 +11,25 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Output() public sidenavToggle = new EventEmitter();
+  @Output() public onLogoutClick = new EventEmitter(); 
 
-  constructor() { }
+  isUserAuthenticated: boolean;
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+  }
+  emitLogout(){
+    this.onLogoutClick.emit();
   }
   public onToggleSidenav(){
     this.sidenavToggle.emit();
   }
+  showLogoutButton(): boolean{
+    if(localStorage.getItem("jwt") != null){
+      return true;
+    }
+    return false;
+  }
+
 }

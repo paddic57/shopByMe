@@ -1,3 +1,4 @@
+
 <div class="main">
     <mat-toolbar color="primary">
         <mat-toolbar-row>
@@ -9,6 +10,7 @@
             <a mat-button routerLink='products'> Products </a>
             <a mat-button routerLink='basket'> Basket </a>
             <a mat-button routerLink='users'> Users </a>
+            <a *ngIf ="showLogoutButton()" (click) = "emitLogout()">Logout</a>
           </div>
         </mat-toolbar-row>
     </mat-toolbar>

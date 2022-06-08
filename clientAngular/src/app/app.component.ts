@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 //import { ProductComponent } from './product/product.component';
 import { ProductsServiceService } from './products-service.service';
 import { Product } from './models/product';
@@ -14,28 +14,23 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'lab2';
-
   ngOnInit(): void {
-    
+    this.isUserAuthenticated()
   }
   constructor(private jwtHelper: JwtHelperService, private router: Router){}
-
-  isUserAuthenticated(){
-    const token: string = localStorage.getItem("jwt")
-    if (token && !this.jwtHelper.isTokenExpired(token)){
-      return true
-    }
-    else{
-      return false
-    }
-  }
   logOut(){
     localStorage.removeItem("jwt")
     this.router.navigateByUrl("login")
   }
-  
-
-
+  public isUserAuthenticated(){
+    const token: string = localStorage.getItem("jwt")
+    if (token && !this.jwtHelper.isTokenExpired(token)){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
 
 

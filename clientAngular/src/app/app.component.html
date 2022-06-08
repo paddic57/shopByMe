@@ -2,28 +2,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
 <div>
     <div >
         <mat-sidenav-container>
-            <mat-sidenav #sidenav role="navigation">
-                
+            <mat-sidenav #sidenav role="navigation">     
             </mat-sidenav>
             <mat-sidenav-content>
-                <app-header  (sidenavToggle)="sidenav.toggle()">
-                    yo
-                </app-header>
-                <div class="div1">
-                    <router-outlet></router-outlet>
-                </div>
+                <app-header (onLogoutClick)="logOut()" >
+                </app-header> 
+                <router-outlet></router-outlet>
             </mat-sidenav-content>
         </mat-sidenav-container>
     </div>
     
-    
-    
-    
-    
+        
 </div>
 
