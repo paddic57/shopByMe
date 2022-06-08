@@ -1,4 +1,4 @@
-<div>
+<div class="product">
     <h1><strong>Sklep</strong></h1>
     <div *ngFor = "let prod of products">
       <app-product (onAddToBasket)="addToBasket($event)" [product]="prod" (onEditToBasket)="editToBasket($event)" (onDeleteProduct)="deleteProduct($event)"></app-product>
@@ -6,16 +6,17 @@
     </div>
   
 </div>
-<div>
+<div class="pagination">
   <div>
     <label for = "page">Strona: </label>
-    <input id="page" name="page" type =  "number" [(ngModel)]="page"/>
-  </div>
-  <div>
+    <input min="0" id="page" name="page" type =  "number" [(ngModel)]="page"/>
     <label for = "rowsPerPage">Elementy na strone: </label>
     <input id="rowsPerPage" name="rowsPerPage" type =  "number" [(ngModel)]="rowsPerPage"/>
   </div> 
+  <div>
+    <a mat-button (click) = "refresh()"><mat-icon>refresh</mat-icon> Refresh </a>
+    <a mat-button (click) = "addNewProduct()"><mat-icon>add</mat-icon> Add New Product </a>
+  </div>
 
 </div>
-<button (click) = "refresh()">Refresh</button>
-<button (click) = "addNewProduct()">Add New Product</button>
+

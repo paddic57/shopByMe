@@ -1,28 +1,23 @@
 
-<div>
+<div class="oneProduct">
     <div>
         <div>
-            <div>
-                Name: {{product.name}}
+            <div class="name">
+                {{product.name}}
             </div>
     
         </div>
         <div>
-           <div>
-               Descritption: {{product.description}}
+           <div class="description">
+               {{product.description}}
            </div>
     
         </div>
-        <div>
-           <div>
-               Price: {{product.price}} zl
-           </div>
-    
-        </div>
-        <div>
-            <button (click)="addProductToBasket(product)">Add To Basket</button>
-            <button (click)="editProductToBasket(product)">Edit Product</button>
-            <button (click)="deleteProduct(product)">Delete Product</button>
+        <div class="buttons">
+            {{product.price}} zl
+            <a mat-button (click)="editProductToBasket(product)"><mat-icon>edit</mat-icon></a>
+            <a mat-button (click)="deleteProduct(product)"><mat-icon>delete</mat-icon></a>
+            <a mat-button (click)="addProductToBasket(product)"><mat-icon>add_shopping_cart</mat-icon></a>
         </div>
 
     </div> 

@@ -1,0 +1,21 @@
+.product{
+    color: black;
+    padding: 8px;
+    margin: 20px;
+    font-family: Roboto;
+    font-size:16px;
+
+}
+.pagination{
+    color: black;
+    padding: 8px;
+    margin: 20px;
+}
+a:hover{
+    border-style: groove;
+}
+input{
+    width: 50px;
+    margin: 10px;
+    padding: 5px;
+}
