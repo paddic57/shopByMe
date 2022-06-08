@@ -6,20 +6,21 @@
             <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
           </button>
           <h1> Menu </h1>
-          <div>
-            <a mat-button routerLink='products'> Products </a>
-            <a mat-button routerLink='basket'> Basket </a>
-            <a mat-button routerLink='users'> Users </a>
-            <a *ngIf ="showLogoutButton()" (click) = "emitLogout()">Logout</a>
+          <div fxFlex >
+            <a mat-button routerLink='products'><mat-icon>shopping_cart</mat-icon> Products </a>
+            <a mat-button routerLink='basket'><mat-icon>shopping_basket</mat-icon> Basket </a>
+            <a mat-button routerLink='users'><mat-icon>supervised_user_circle</mat-icon> Users </a>
+            <a fxFlex fxLayoutAlign="flex-end center" mat-button *ngIf ="showLogoutButton()" (click) = "emitLogout()"><mat-icon>lock</mat-icon>Logout</a>
           </div>
         </mat-toolbar-row>
     </mat-toolbar>
     <mat-sidenav-container>
         <mat-sidenav #sidenav>
           <mat-nav-list>
-            <a mat-list-item routerLink="products"> Products </a>
-            <a mat-list-item routerLink='basket'> Basket </a>
-            <a mat-list-item routerLink='users'> Users </a>
+            <a mat-list-item routerLink="products"><mat-icon>shopping_cart</mat-icon> Products </a>
+            <a mat-list-item routerLink='basket'><mat-icon>shopping_basket</mat-icon> Basket </a>
+            <a mat-list-item routerLink='users'><mat-icon>supervised_user_circle</mat-icon> Users </a>
+            <a mat-button *ngIf ="showLogoutButton()" (click) = "emitLogout()"><mat-icon>lock</mat-icon> Logout </a>
           </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>

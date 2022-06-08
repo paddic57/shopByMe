@@ -23,3 +23,6 @@ mat-sidenav-content{
     color: white;
     font-family: Roboto;
 }
+.flexExpand {
+    flex: 1 1 auto;
+}
