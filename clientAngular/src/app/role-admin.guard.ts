@@ -7,16 +7,14 @@ import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class RoleAdminGuard implements CanActivate {
   constructor(private jwtHelper: JwtHelperService, private router: Router){}
-  canActivate(){
-    const token = localStorage.getItem("jwt")
-    if (token && !this.jwtHelper.isTokenExpired(token)){
-      return true;
-    }
-    this.router.navigate(["login"])
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      if(this.getRole()=="Admin")
+      return true
     return false;
-    
   }
   getRole(): string{
     const role = JSON.stringify(this.jwtHelper.decodeToken(localStorage.getItem("jwt")))
@@ -25,12 +23,4 @@ export class AuthGuard implements CanActivate {
         .slice(1, -1)
     return role
   }
-  haveAccessAdmin(): boolean{
-    if(this.getRole()=="Admin")
-      return true
-    return false;
-  }
-  
-
-  
 }

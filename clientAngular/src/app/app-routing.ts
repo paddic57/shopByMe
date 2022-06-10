@@ -8,16 +8,17 @@ import { UserFormComponent } from "./user-form/user-form.component";
 import { UsersAddComponent } from "./users-add/users-add.component";
 import { ProductsAddComponent } from "./products-add/products-add.component";
 import { AuthGuard } from "./auth.guard";
+import { RoleAdminGuard } from "./role-admin.guard";
 
 
 export const APP_ROUTES: Routes = [
     {path: 'products', component: ProductsListComponent, canActivate: [AuthGuard]},
     {path: 'basket', component: BasketListComponent, canActivate: [AuthGuard]},
-    {path: 'users', component: UsersListComponent, canActivate: [AuthGuard]},
+    {path: 'users', component: UsersListComponent, canActivate: [RoleAdminGuard]},
     {path: 'login', component: LoginComponent},
-    {path: 'products/edit/:id', component: ProductFormComponent, canActivate: [AuthGuard]},
-    {path: 'users/edit/:id', component: UserFormComponent, canActivate: [AuthGuard]},
-    {path: 'users/add', component: UsersAddComponent, canActivate: [AuthGuard]},
-    {path: 'products/add', component: ProductsAddComponent, canActivate: [AuthGuard]},
+    {path: 'products/edit/:id', component: ProductFormComponent, canActivate: [RoleAdminGuard]},
+    {path: 'users/edit/:id', component: UserFormComponent, canActivate: [RoleAdminGuard]},
+    {path: 'users/add', component: UsersAddComponent, canActivate: [RoleAdminGuard]},
+    {path: 'products/add', component: ProductsAddComponent, canActivate: [RoleAdminGuard]},
     {path: '', redirectTo: 'products', pathMatch: 'full'},  
 ]
